@@ -26,5 +26,5 @@ class Compress:
         encoded_data = EncodeDecode(self.file_content, dictionary).encode()
         padded_data = Padding(encoded_data).add_padding()
         encoded_dictionary = EncodeDecode(self.file_content, dictionary).encode_dictionary()
-        final_binary_data = padded_data + encoded_dictionary
-        return final_binary_data
+        bits = padded_data + encoded_dictionary
+        return bits

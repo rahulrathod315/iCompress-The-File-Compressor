@@ -20,8 +20,7 @@ class EncodeDecode:
     def encode_dictionary(self):
         encoded_dictionary = ""
         dictionary_string = str(self.dictionary).strip()
-        for alphabet in dictionary_string:
-            encoded_dictionary += format(ord(alphabet), '08b')
+        encoded_dictionary = bin(int.from_bytes(dictionary_string.encode(), 'big')).replace("0b", "")
         return encoded_dictionary
     
     def decode(self):
@@ -43,8 +42,5 @@ class EncodeDecode:
         return {value: key for key, value in self.dictionary.items()}
 
     def decode_dictionary(self):
-        dictionary = ""
-        for index in range(0, len(self.dictionary), 8):
-            byte = self.dictionary[index:index+8]
-            dictionary += chr(int(byte, 2))
-        return eval(dictionary)
+        dictionary = int(self.dictionary, 2).to_bytes((len(self.dictionary) + 7) // 8, byteorder='big')
+        return eval(dictionary.decode('utf-8'))

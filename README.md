@@ -9,11 +9,15 @@ To use this tool, you need to have Python 3 installed on your system. You also n
   
 # Usage:
 To compress a file, navigate to the project directory in your terminal and run the following command:
+  ```
   python compress.py <input_file_path> <output_file_path>
+  ```
 where <input_file_path> is the path to the file you want to compress and <output_file_path> is the path to the compressed output file.
 
 To decompress a compressed file, run the following command:
+  ```
   python decompress.py <compressed_file_path> <output_file_path>
+  ```
 where <compressed_file_path> is the path to the compressed file and <output_file_path> is the path to the decompressed output file.
 
 # How it works:

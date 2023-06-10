@@ -1,4 +1,4 @@
-# iCompress-The-File-Compressor
+# iCompress-The-Text-File-Compressor
 
 iCompress is a Python-based file compression tool that uses the Huffman coding algorithm to compress files. It takes a file input, compresses it using Huffman coding, and generates a compressed output file. It also has the capability to decompress the compressed file and retrieve the original file.
 

@@ -15,9 +15,6 @@ iCompress is a Python-based file compression tool that uses the Huffman coding a
 ## Requirements:
 To use this tool, you need to have the following installed on your system:
 - **Python 3**: Ensure Python 3 is installed. You can download it from [python.org](https://www.python.org/).
-- **Required Libraries**: The following Python libraries are used:
-  - `argparse`: For parsing command-line arguments.
-  - `heapq`: For implementing the priority queue used in the Huffman tree.
 
 ---
 

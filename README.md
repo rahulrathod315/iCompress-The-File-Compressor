@@ -1,128 +1,117 @@
-# iCompress-The-Text-File-Compressor
+# iCompress - The File Compressor
 
-iCompress is a Python-based file compression tool that uses the Huffman coding algorithm to compress and decompress files. This project is designed to reduce the size of text files by encoding their contents into a more compact binary format. It also provides the capability to decompress the compressed files back to their original form.
-
----
-
-## Features:
-1. **File Compression**: Compresses text files using the Huffman coding algorithm.
-2. **File Decompression**: Decompresses previously compressed files to restore the original content.
-3. **Efficient Encoding**: Uses a frequency-based Huffman tree to generate optimal binary encodings for file contents.
-4. **Cross-Platform**: Written in Python, making it compatible with any system that supports Python 3.
+iCompress is a Python package for efficient file compression and decompression using Huffman coding. It is designed to reduce file sizes while maintaining data integrity, making it ideal for storage optimization and file transfer.
 
 ---
 
-## Requirements:
-To use this tool, you need to have the following installed on your system:
-- **Python 3**: Ensure Python 3 is installed. You can download it from [python.org](https://www.python.org/).
+## Features
+
+- **Custom Compression Algorithms**: Implements Huffman coding for efficient text compression.
+- **Decompression Support**: Restores compressed files to their original state.
+- **Command-Line Interface**: Easy-to-use CLI for compression and decompression tasks.
+- **Cross-Platform**: Works on all major operating systems with Python 3.6+.
 
 ---
 
-## Project Structure:
-The project is organized as follows:
+## Installation
+
+iCompress is available on PyPI and can be installed using `pip`:
+
+```bash
+pip install iCompress
+```
+
+---
+
+## Usage
+
+### Command-Line Interface
+
+#### Compress a File
+To compress a file, use the following command:
+```bash
+python3 -m iCompress compress <input_file> <output_file>
+```
+Example:
+```bash
+python3 -m iCompress compress example.txt output.bin
+```
+
+#### Decompress a File
+To decompress a file, use the following command:
+```bash
+python3 -m iCompress decompress <output_file> <decompressed_file>
+```
+Example:
+```bash
+python3 -m iCompress decompress output.bin uncompressed.txt
+```
+
+---
+
+## How to Use This Repository
+
+If you want to explore or contribute to the source code, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rahulrathod315/iCompress-The-File-Compressor.git
+   cd iCompress-The-File-Compressor
+   ```
+
+2. Install the package in editable mode for development:
+   ```bash
+   pip install -e .
+   ```
+
+3. Run the compression and decompression commands as described above.
+
+4. To test the package, you can use the provided `example.txt` file or any other text file.
+
+---
+
+## Project Structure
+
 ```
 iCompress/
     __init__.py
-    compress.py          # Main script for compressing files
-    decompress.py        # Main script for decompressing files
+    compress.py          # Main compression logic
+    decompress.py        # Main decompression logic
     services/
         compression_core/
-            encoding_and_decoding.py  # Handles encoding and decoding logic
-            frequency_tree.py         # Constructs the Huffman tree
-            frequency.py              # Calculates frequency of bytes
-            padding.py                # Handles padding for binary strings
-            prepare_dictionary.py     # Prepares the Huffman dictionary
+            encoding_and_decoding.py  # Encoding and decoding logic
+            frequency_tree.py         # Huffman tree implementation
+            frequency.py              # Frequency analysis for compression
+            padding.py                # Padding utilities for bit alignment
+            prepare_dictionary.py     # Dictionary preparation for encoding
         file_service/
-            file_metadata.py          # Manages file metadata
-            file_write.py             # Handles writing to files
+            file_metadata.py          # Handles file metadata during compression
+            file_write.py             # Writes compressed data to files
+setup.py               # Package setup configuration
+README.md              # Project documentation
+LICENSE                # License information
+example.txt            # Sample input file for testing
 ```
 
 ---
 
-## How It Works:
+## Contributing
 
-### Compression:
-1. The `compress.py` script reads the input file and calculates the frequency of each byte in the file.
-2. A Huffman tree is constructed based on the frequency of each byte. Bytes with higher frequencies are assigned shorter binary codes.
-3. Using the Huffman tree, each byte in the input file is encoded into a binary string of variable length.
-4. The encoded binary strings, along with the Huffman tree, are written to the output file. The tree is necessary for decompression.
+Contributions are welcome! Please follow these steps:
 
-### Decompression:
-1. The `decompress.py` script reads the compressed file and reconstructs the Huffman tree from the stored metadata.
-2. Using the reconstructed tree, the binary strings in the compressed file are decoded back into their original bytes.
-3. The original bytes are written to the output file, restoring the original content.
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push them to your fork.
+4. Submit a pull request with a detailed description of your changes.
 
 ---
 
-## Usage:
+## License
 
-### Compressing a File:
-To compress a file, navigate to the project directory in your terminal and run the following command:
-```bash
-python compress.py <input_file_path> <binary_file_path>
-```
-- `<input_file_path>`: Path to the file you want to compress.
-- `<binary_file_path>`: Path where the compressed binary file will be saved.
-
-**Example:**
-```bash
-python compress.py example.txt output.bin
-```
-This will compress `example.txt` and save the compressed output as `output.bin`.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-### Decompressing a File:
-To decompress a file, run the following command:
-```bash
-python decompress.py <output_file_path> <binary_file_path>
-```
-- `<output_file_path>`: Path where the decompressed file will be saved.
-- `<binary_file_path>`: Path to the compressed binary file.
+## Contact
 
-**Example:**
-```bash
-python decompress.py decompressed_example.txt output.bin
-```
-This will decompress `output.bin` and save the decompressed content as `decompressed_example.txt`.
-
----
-
-## Example Workflow:
-1. **Compress a File**:
-   - Input: `example.txt`
-   - Command: `python compress.py example.txt output.bin`
-   - Output: `output.bin`
-
-2. **Decompress the File**:
-   - Input: `output.bin`
-   - Command: `python decompress.py decompressed_example.txt output.bin`
-   - Output: `decompressed_example.txt`
-
----
-
-## Limitations:
-- This tool is designed for text files. Compressing binary files may not yield significant size reductions.
-- The compressed file includes metadata (Huffman tree), which may slightly increase the file size for very small inputs.
-
----
-
-## Future Enhancements:
-- Add support for compressing binary files.
-- Implement multi-threading for faster compression and decompression.
-- Provide a graphical user interface (GUI) for ease of use.
-
----
-
-## License:
-This project is distributed under the MIT License. See the LICENSE file for more details.
-
----
-
-## Acknowledgments:
-This project uses the Huffman coding algorithm, a widely used method for lossless data compression. Special thanks to the Python community for providing excellent libraries and resources.
-
----
-
-## Contact:
-For any questions or feedback, please contact the project maintainer at [rahulrathod315@example.com].
+For questions or feedback, please contact the project maintainer at `rahul.rathod@gmail.com`.

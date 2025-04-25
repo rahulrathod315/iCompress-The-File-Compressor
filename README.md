@@ -62,10 +62,10 @@ iCompress/
 ### Compressing a File:
 To compress a file, navigate to the project directory in your terminal and run the following command:
 ```bash
-python compress.py <input_file_path> <output_file_path>
+python compress.py <input_file_path> <binary_file_path>
 ```
 - `<input_file_path>`: Path to the file you want to compress.
-- `<output_file_path>`: Path where the compressed file will be saved.
+- `<binary_file_path>`: Path where the compressed binary file will be saved.
 
 **Example:**
 ```bash
@@ -78,16 +78,16 @@ This will compress `example.txt` and save the compressed output as `output.bin`.
 ### Decompressing a File:
 To decompress a file, run the following command:
 ```bash
-python decompress.py <compressed_file_path> <output_file_path>
+python decompress.py <output_file_path> <binary_file_path>
 ```
-- `<compressed_file_path>`: Path to the compressed file.
 - `<output_file_path>`: Path where the decompressed file will be saved.
+- `<binary_file_path>`: Path to the compressed binary file.
 
 **Example:**
 ```bash
-python decompress.py output.bin uncompress.txt
+python decompress.py decompressed_example.txt output.bin
 ```
-This will decompress `output.bin` and save the decompressed content as `uncompress.txt`.
+This will decompress `output.bin` and save the decompressed content as `decompressed_example.txt`.
 
 ---
 
@@ -99,8 +99,8 @@ This will decompress `output.bin` and save the decompressed content as `uncompre
 
 2. **Decompress the File**:
    - Input: `output.bin`
-   - Command: `python decompress.py output.bin uncompress.txt`
-   - Output: `uncompress.txt`
+   - Command: `python decompress.py decompressed_example.txt output.bin`
+   - Output: `decompressed_example.txt`
 
 ---
 
@@ -128,4 +128,4 @@ This project uses the Huffman coding algorithm, a widely used method for lossles
 ---
 
 ## Contact:
-For any questions or feedback, please contact the project maintainer at [rahulrathod315@gmail.com].
+For any questions or feedback, please contact the project maintainer at [rahulrathod315@example.com].
